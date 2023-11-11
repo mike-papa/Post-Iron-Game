@@ -1,13 +1,9 @@
 package com.example.postirongame.controller;
 
-import com.example.postirongame.Main;
+import com.example.postirongame.service.SceneService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -15,6 +11,11 @@ import java.io.IOException;
 public class InitialViewController {
     @FXML
     private Label plotDescription;
+    private final SceneService sceneService;
+    public InitialViewController(SceneService sceneService) {
+        this.sceneService = sceneService;
+    }
+
     public void initialize() {
         plotDescription.setText("""
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac placerat vestibulum lectus mauris ultrices eros in. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Suspendisse interdum consectetur libero id faucibus. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Vulputate ut pharetra sit amet aliquam id diam maecenas. Condimentum mattis pellentesque id nibh tortor id. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Amet nisl suscipit adipiscing bibendum est ultricies integer. Neque aliquam vestibulum morbi blandit cursus. Sed lectus vestibulum mattis ullamcorper velit sed. Vitae ultricies leo integer malesuada nunc vel risus. In hendrerit gravida rutrum quisque. Ullamcorper sit amet risus nullam eget felis. Ut pharetra sit amet aliquam id diam maecenas. Sit amet est placerat in. A condimentum vitae sapien pellentesque habitant.
@@ -64,10 +65,6 @@ public class InitialViewController {
     }
 
     public void onNextButtonClicked(ActionEvent event) throws IOException {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("game-character-class-select.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 400);
-        stage.setScene(scene);
+        sceneService.switchScene(event, "game-character-class-select.fxml");
     }
 }

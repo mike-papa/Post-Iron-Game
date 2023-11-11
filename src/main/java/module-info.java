@@ -10,5 +10,6 @@ module com.example.postirongame {
     exports com.example.postirongame.gameCharacter;
     exports com.example.postirongame.controller;
     opens com.example.postirongame.controller to javafx.fxml;
+    exports com.example.postirongame.service;
 
 }
