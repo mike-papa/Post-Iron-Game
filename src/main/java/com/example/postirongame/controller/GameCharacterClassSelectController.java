@@ -56,7 +56,8 @@ public class GameCharacterClassSelectController {
     }
     public void onSubmitButtonClicked() {
         if (selectedGameCharacterClass != null) {
-            GameCharacter.createGameCharacter(selectedGameCharacterClass);
+            GameCharacter gameCharacter = GameCharacter.getInstance();
+            gameCharacter.addGameCharacterClass(selectedGameCharacterClass);
             System.out.println(GameCharacter.getInstance().toString());
         }
     }
